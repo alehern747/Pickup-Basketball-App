@@ -25,6 +25,13 @@ enum GameFormat: String {
 enum ScoringFormat: String {
     case onesAndTwos = "1s and 2s"
     case twosAndThrees = "2s and 3s"
+    
+    var pointValues: [Int] {
+        switch self {
+        case .onesAndTwos: return [1, 2]
+        case .twosAndThrees: return [2, 3]
+        }
+    }
 }
 
 enum ExperienceLevel: String {

@@ -34,7 +34,7 @@ struct ProfileView: View {
         .buttonStyle(.borderedProminent)
     }
         
-    func profileSection(title: String, tags: Array<String>) -> some View {
+    func profileSection(title: String, tags: [String]) -> some View {
         let columns = [
             GridItem(.adaptive(minimum: 105), spacing: 8)
         ]
