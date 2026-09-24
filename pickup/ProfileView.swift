@@ -13,7 +13,7 @@ struct ProfileView: View {
         VStack(alignment: .leading) {
             Divider()
             
-            profileSection(title: "Position", tags: [user.positions[0].rawValue, user.positions[1].rawValue])
+            profileSection(title: "Position", tags: user.positions.map { $0.rawValue })
             
             Divider()
             
@@ -21,7 +21,7 @@ struct ProfileView: View {
             
             Divider()
 
-            profileSection(title: "Preferences", tags: [user.gamePreferences[0].rawValue, user.gamePreferences[1].rawValue, user.scoringPreferences[0].rawValue])
+            profileSection(title: "Preferences", tags: user.gamePreferences.map {$0.rawValue} + user.scoringPreferences.map{ $0.rawValue })
         }
         .padding(.horizontal, 20)
         .padding()
