@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    let user = User()
+    let user: User
     
     var body: some View {
         VStack {
@@ -56,5 +56,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(user: sampleCurrentUser)
 }

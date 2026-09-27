@@ -1,21 +1,11 @@
-//
-//  ContentView.swift
-//  pickup
-//
-//  Created by Alexander Hernandez on 7/31/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var users: [User] = []
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        CreateProfileView { user in users.append(user)
         }
-        .padding()
     }
 }
 

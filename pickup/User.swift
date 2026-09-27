@@ -1,16 +1,16 @@
 import Foundation
 
 // filler info
-struct User {
+struct User: Identifiable, Hashable {
     let id: UUID = UUID()
     
-    var name: String = "Marcus"
-    var city: String = "Los Angeles"
-    var state: USState = .california
-    var experienceLevel: ExperienceLevel = .recreational
-    var positions: Set<Position> = [.pointGuard, .shootingGuard]
-    var gamePreferences: Set<GameFormat> = [.oneOnOne, .fiveOnFive]
-    var scoringPreferences: Set<ScoringFormat> = [.onesAndTwos]
+    var name: String
+    var city: String
+    var state: USState
+    var experienceLevel: ExperienceLevel
+    var positions: Set<Position>
+    var gamePreferences: Set<GameFormat>
+    var scoringPreferences: Set<ScoringFormat>
     
     // var profileImageURL: URL?
     // some kind of user id?

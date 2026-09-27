@@ -10,6 +10,8 @@ struct CreateProfileView: View {
     @State private var selectedGamePrefs: Set<GameFormat> = []
     @State private var selectedScoringPrefs: Set<ScoringFormat> = []
     
+    var onCreate: (User) -> Void
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -72,6 +74,8 @@ struct CreateProfileView: View {
                     gamePreferences: selectedGamePrefs,
                     scoringPreferences: selectedScoringPrefs
                 )
+                
+                onCreate(user)
             }.padding()
             .buttonStyle(.borderedProminent)
         }
@@ -79,5 +83,6 @@ struct CreateProfileView: View {
 }
 
 #Preview {
-    CreateProfileView()
+    CreateProfileView { user in
+    }
 }

@@ -3,15 +3,19 @@ import Foundation
 // test data
 
 let redTeam = Team(
-    id: UUID(),
     name: "Red",
+    city: "Los Angeles",
+    state: .california,
+    roster: sampleFriends,
     wins: 2,
     losses: 0
 )
 
 let blueTeam = Team(
-    id: UUID(),
     name: "Blue",
+    city: "Torrance",
+    state: .california,
+    roster: sampleFriends,
     wins: 1,
     losses: 1
 )
@@ -91,16 +95,6 @@ struct Game {
 enum GameSide {
     case teamOne
     case teamTwo
-}
-
-struct Team {
-    let id: UUID
-    var name: String
-    // var logo: URL?
-    // var roster: [User] // more of a set? does that exist?
-    var wins: Int
-    var losses: Int
-    // var league: String // change to actual league system?
 }
 
 struct TeamGameState {

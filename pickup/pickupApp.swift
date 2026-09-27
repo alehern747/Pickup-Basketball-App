@@ -4,7 +4,7 @@ import SwiftUI
 struct pickupApp: App {
     var body: some Scene {
         WindowGroup {
-            ProfileView()
+            ProfileView(user: sampleCurrentUser)
         }
     }
 }
