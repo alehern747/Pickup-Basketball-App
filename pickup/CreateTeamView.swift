@@ -13,14 +13,10 @@ struct CreateTeamView: View {
     var body: some View {
         VStack (alignment: .leading) {
             Text("Team Name").bold()
-            // auto complete to "[Name]'s Team"
             TextField("\(currentUser.name)'s Team", text: $teamName)
             
             Text("Location").bold()
-            HStack {
-                Text("City:")
-                TextField("____", text: $teamCity)
-            }
+            textFieldRow("City", text: $teamCity)
             
             HStack {
                 Text("State:")
@@ -39,13 +35,11 @@ struct CreateTeamView: View {
                         friend in Text(friend.name)
                         .tag(friend.id as UUID?)}
                 }.background(.gray.opacity(0.15))
-                
+
                 Spacer()
                 
                 Button("Add") {
-                    if let friend = friends.first(where: { $0.id == selectedFriend }), !roster.contains(where: { $0.id == friend.id }) {
-                        roster.append(friend)
-                    }
+                    addSelectedFriend()
                 }
             }
             
@@ -53,7 +47,7 @@ struct CreateTeamView: View {
                 HStack {
                     Text(teammate.name)
                     Button("Remove") {
-                        roster.removeAll(where: { $0.id == teammate.id })
+                        removeTeammate(teammate)
                     }
                 }
             }
@@ -70,6 +64,16 @@ struct CreateTeamView: View {
             // onCreate(team) logic for creating a team and using it
         }.padding()
         .buttonStyle(.borderedProminent)
+    }
+    
+    func addSelectedFriend() {
+        if let friend = friends.first(where: { $0.id == selectedFriend }), !roster.contains(where: { $0.id == friend.id }) {
+            roster.append(friend)
+        }
+    }
+    
+    func removeTeammate(_ teammate: User) {
+        roster.removeAll { $0.id == teammate.id }
     }
 }
 

@@ -16,52 +16,38 @@ struct CreateProfileView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 // apply limits on names, with visible character count
-                HStack {
-                    Text("Name:")
-                    TextField("Here", text: $displayName)
-                }
-                HStack {
-                    Text("City:")
-                    TextField("Here", text: $city)
-                }
+                textFieldRow("Name", text: $displayName)
+                textFieldRow("City", text: $city)
+                
                 HStack {
                     Text("State:")
-                    Picker("State", selection: $selectedState) {
-                        ForEach(USState.allCases, id: \.self) { state in
-                            Text(state.rawValue)
-                        }
-                    }
+                    EnumPicker(title: "State", selection: $selectedState)
                 }
                 HStack {
                     Text("Experience Level:")
-                    Picker("State", selection: $selectedLevel) {
-                        ForEach(ExperienceLevel.allCases, id: \.self) { level in
-                            Text(level.rawValue)
-                        }
-                    }
+                    EnumPicker(title: "Experience Level", selection: $selectedLevel)
                 }
                 
-                // revise this with auto framing?
-                Text("Positions Played")
-                List(Position.allCases, id: \.self, selection: $selectedPositions) {
-                    Text("\($0.rawValue)")
-                }.environment(\.editMode, .constant(EditMode.active))
-                    .listStyle(.plain)
-                    .frame(height: 280)
-                
-                Text("Game Preferences")
-                List(GameFormat.allCases, id: \.self, selection: $selectedGamePrefs) {
-                    Text("\($0.rawValue)")
-                }.environment(\.editMode, .constant(EditMode.active))
-                    .listStyle(.plain)
-                    .frame(height: 180)
-                
-                Text("Scoring Preferences")
-                List(ScoringFormat.allCases, id: \.self, selection: $selectedScoringPrefs) {
-                    Text("\($0.rawValue)")
-                }.environment(\.editMode, .constant(EditMode.active))
-                    .listStyle(.plain)
-                    .frame(height: 100)
+                multiSelectionSection(
+                    title: "Positions Played",
+                    options: Position.allCases,
+                    selection: $selectedPositions,
+                    height: 280
+                )
+
+                multiSelectionSection(
+                    title: "Game Preferences",
+                    options: GameFormat.allCases,
+                    selection: $selectedGamePrefs,
+                    height: 180
+                )
+
+                multiSelectionSection(
+                    title: "Scoring Preferences",
+                    options: ScoringFormat.allCases,
+                    selection: $selectedScoringPrefs,
+                    height: 100
+                )
             }.padding()
             
             Button("Create Profile") {
@@ -78,6 +64,20 @@ struct CreateProfileView: View {
                 onCreate(user)
             }.padding()
             .buttonStyle(.borderedProminent)
+        }
+    }
+    
+    func multiSelectionSection<T>(title: String, options: [T], selection: Binding<Set<T>>, height: CGFloat) -> some View where T: Hashable, T: RawRepresentable, T.RawValue == String {
+        
+        VStack(alignment: .leading) {
+            Text(title)
+
+            List(options, id: \.self, selection: selection) { option in
+                Text(option.rawValue)
+            }
+            .environment(\.editMode, .constant(.active))
+            .listStyle(.plain)
+            .frame(height: height)
         }
     }
 }

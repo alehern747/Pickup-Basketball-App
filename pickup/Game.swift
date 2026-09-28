@@ -1,48 +1,15 @@
 import Foundation
 
-// test data
-
-let redTeam = Team(
-    name: "Red",
-    city: "Los Angeles",
-    state: .california,
-    roster: sampleFriends,
-    wins: 2,
-    losses: 0
-)
-
-let blueTeam = Team(
-    name: "Blue",
-    city: "Torrance",
-    state: .california,
-    roster: sampleFriends,
-    wins: 1,
-    losses: 1
-)
-
-let test_1 = TeamGameState(
-    team: redTeam,
-    score: 1,
-    timeoutsRemaining: 2
-)
-
-let test_2 = TeamGameState(
-    team: blueTeam,
-    score: 0,
-    timeoutsRemaining: 2
-)
-
 struct Game {
-    var teamOne: TeamGameState = test_1
-    var teamTwo: TeamGameState = test_2
-    var scoringFormat: ScoringFormat = .onesAndTwos
-    var gameFormat: GameFormat = .oneOnOne
+    var teamOne: TeamGameState
+    var teamTwo: TeamGameState
+    var scoringFormat: ScoringFormat
+    var gameFormat: GameFormat
     var targetScore: Int = 12
     var status: GameStatus = .preGame
     var winByTwo: Bool = true
     // var timer system?
-    // status? ongoing, finished? maybe useful for checking a court is currently taken?
-    // put location here too?
+    // var location?
     
     var isOver: Bool { status == .concluded }
     
@@ -99,7 +66,7 @@ enum GameSide {
 
 struct TeamGameState {
     var team: Team
-    var score: Int
+    var score: Int = 0
     // var players: [User]
     var timeoutsRemaining: Int
 }

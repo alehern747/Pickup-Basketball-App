@@ -1,6 +1,5 @@
 import Foundation
 
-// filler info
 struct User: Identifiable, Hashable {
     let id: UUID = UUID()
     
@@ -13,7 +12,6 @@ struct User: Identifiable, Hashable {
     var scoringPreferences: Set<ScoringFormat>
     
     // var profileImageURL: URL?
-    // some kind of user id?
 }
 
 enum GameFormat: String, CaseIterable {
@@ -49,6 +47,16 @@ enum Position : String, CaseIterable {
     case smallForward = "Small Forward"
     case powerForward = "Power Forward"
     case center = "Center"
+    
+    var abbreviation: String {
+        switch self {
+        case .pointGuard: return "PG"
+        case .shootingGuard: return "SG"
+        case .smallForward: return "SF"
+        case .powerForward: return "PF"
+        case .center: return "C"
+        }
+    }
 }
 
 enum USState: String, CaseIterable {

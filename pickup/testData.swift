@@ -1,5 +1,7 @@
 import Foundation
 
+// Logged in user
+
 let sampleCurrentUser = User(
     name: "Marcus",
     city: "Los Angeles",
@@ -9,6 +11,8 @@ let sampleCurrentUser = User(
     gamePreferences: [.threeOnThree, .fiveOnFive],
     scoringPreferences: [.onesAndTwos]
 )
+
+// Player Rosters
 
 let sampleFriends: [User] = [
     User(
@@ -61,3 +65,162 @@ let sampleFriends: [User] = [
         scoringPreferences: [.onesAndTwos]
     )
 ]
+
+let sampleFriendsTwo: [User] = [
+    User(
+        name: "Ethan",
+        city: "Fullerton",
+        state: .california,
+        experienceLevel: .recreational,
+        positions: [.pointGuard, .shootingGuard],
+        gamePreferences: [.threeOnThree, .fiveOnFive],
+        scoringPreferences: [.onesAndTwos]
+    ),
+
+    User(
+        name: "Cameron",
+        city: "Whittier",
+        state: .california,
+        experienceLevel: .highSchool,
+        positions: [.shootingGuard, .smallForward],
+        gamePreferences: [.oneOnOne, .threeOnThree, .fiveOnFive],
+        scoringPreferences: [.onesAndTwos]
+    ),
+
+    User(
+        name: "Isaiah",
+        city: "Downey",
+        state: .california,
+        experienceLevel: .college,
+        positions: [.smallForward, .powerForward],
+        gamePreferences: [.threeOnThree, .fiveOnFive],
+        scoringPreferences: [.twosAndThrees]
+    ),
+
+    User(
+        name: "Noah",
+        city: "Cerritos",
+        state: .california,
+        experienceLevel: .recreational,
+        positions: [.powerForward, .center],
+        gamePreferences: [.threeOnThree, .fiveOnFive],
+        scoringPreferences: [.onesAndTwos, .twosAndThrees]
+    ),
+
+    User(
+        name: "Julian",
+        city: "Lakewood",
+        state: .california,
+        experienceLevel: .highSchool,
+        positions: [.center],
+        gamePreferences: [.fiveOnFive],
+        scoringPreferences: [.twosAndThrees]
+    )
+]
+
+// Teams
+
+let teamOne = Team(
+    name: "LA Lions",
+    city: "Los Angeles",
+    state: .california,
+    roster: sampleFriends
+)
+
+let teamTwo = Team(
+    name: "Torrance Cowboys",
+    city: "Torrance",
+    state: .california,
+    roster: sampleFriends
+)
+
+// Team States
+
+let teamStateOne = TeamGameState(
+    team: teamOne,
+    score: 1,
+    timeoutsRemaining: 2
+)
+
+let teamStateTwo = TeamGameState(
+    team: teamTwo,
+    score: 0,
+    timeoutsRemaining: 2
+)
+
+let sampleUserTeams: [Team] = [
+    Team(
+        name: "LA Ballers",
+        city: "Los Angeles",
+        state: .california,
+        roster: [
+            sampleCurrentUser,
+            sampleFriends[0],
+            sampleFriends[1],
+            sampleFriends[2],
+            sampleFriends[3]
+        ]
+    ),
+
+    Team(
+        name: "South Bay Hoops",
+        city: "Torrance",
+        state: .california,
+        roster: [
+            sampleCurrentUser,
+            sampleFriends[1],
+            sampleFriends[2],
+            sampleFriends[3],
+            sampleFriends[4]
+        ]
+    )
+]
+
+
+let sampleOpponentTeams: [Team] = [
+    Team(
+        name: "Cerritos Five",
+        city: "Cerritos",
+        state: .california,
+        roster: [
+            sampleFriendsTwo[0],
+            sampleFriendsTwo[1],
+            sampleFriendsTwo[2],
+            sampleFriendsTwo[3],
+            sampleFriendsTwo[4]
+        ]
+    ),
+
+    Team(
+        name: "OC Elite",
+        city: "Fullerton",
+        state: .california,
+        roster: [
+            sampleFriendsTwo[0],
+            sampleFriendsTwo[1],
+            sampleFriendsTwo[2],
+            sampleFriendsTwo[3],
+            sampleFriendsTwo[4]
+        ]
+    ),
+
+    Team(
+        name: "Gateway Hoops",
+        city: "Whittier",
+        state: .california,
+        roster: [
+            sampleFriendsTwo[0],
+            sampleFriendsTwo[1],
+            sampleFriendsTwo[2],
+            sampleFriendsTwo[3],
+            sampleFriendsTwo[4]
+        ]
+    )
+]
+
+let sampleGame: Game = Game(
+    teamOne: teamStateOne,
+    teamTwo: teamStateTwo,
+    scoringFormat: .onesAndTwos,
+    gameFormat: .oneOnOne
+)

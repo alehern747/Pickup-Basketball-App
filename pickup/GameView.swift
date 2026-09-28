@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameView: View {
-    @State var game = Game()
+    @State var game: Game
     
     var body: some View {
         VStack(spacing: 20) {
@@ -16,7 +16,7 @@ struct GameView: View {
             
             // timer?
             // court view with player rosters here
-            // extra details below that, at the bottom
+            // extra stats about game below
             
             Spacer()
         }.padding(30)
@@ -48,5 +48,5 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView()
+    GameView(game: sampleGame)
 }
