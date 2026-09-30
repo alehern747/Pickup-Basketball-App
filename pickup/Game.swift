@@ -1,6 +1,7 @@
 import Foundation
 
-struct Game {
+struct Game: Identifiable {
+    let id: UUID = UUID()
     var teamOne: TeamGameState
     var teamTwo: TeamGameState
     var scoringFormat: ScoringFormat
@@ -69,4 +70,5 @@ struct TeamGameState {
     var score: Int = 0
     // var players: [User]
     var timeoutsRemaining: Int
+    // win / loss data, when pulled to game, should not be most current, so add version here
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameView: View {
     @State var game: Game
-    
+
     var body: some View {
         VStack(spacing: 20) {
             Text(game.status.rawValue)
@@ -26,7 +26,13 @@ struct GameView: View {
         let teamState = game.team(for: side)
         
         return VStack {
-            Text(teamState.team.name).font(.largeTitle)
+            NavigationLink {
+                TeamView(team: teamState.team)
+            } label: {
+                Text(teamState.team.name)
+                    .font(.largeTitle)
+                    .foregroundStyle(.black)
+            }
             // logos should go here too
             // clicking logo/text should go to team page
             
@@ -50,3 +56,5 @@ struct GameView: View {
 #Preview {
     GameView(game: sampleGame)
 }
+
+// ADD going back button? as simple as a back arrow?

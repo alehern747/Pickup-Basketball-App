@@ -134,20 +134,6 @@ let teamTwo = Team(
     roster: sampleFriends
 )
 
-// Team States
-
-let teamStateOne = TeamGameState(
-    team: teamOne,
-    score: 1,
-    timeoutsRemaining: 2
-)
-
-let teamStateTwo = TeamGameState(
-    team: teamTwo,
-    score: 0,
-    timeoutsRemaining: 2
-)
-
 let sampleUserTeams: [Team] = [
     Team(
         name: "LA Ballers",
@@ -224,3 +210,87 @@ let sampleGame: Game = Game(
     scoringFormat: .onesAndTwos,
     gameFormat: .oneOnOne
 )
+
+// Team States
+
+let teamStateOne = TeamGameState(
+    team: teamOne,
+    score: 1,
+    timeoutsRemaining: 2
+)
+
+let teamStateTwo = TeamGameState(
+    team: teamTwo,
+    score: 0,
+    timeoutsRemaining: 2
+)
+
+let laBallersState = TeamGameState(
+    team: sampleUserTeams[0],
+    score: 8,
+    timeoutsRemaining: 2
+)
+
+let southBayHoopsState = TeamGameState(
+    team: sampleUserTeams[1],
+    score: 14,
+    timeoutsRemaining: 1
+)
+
+let cerritosFiveState = TeamGameState(
+    team: sampleOpponentTeams[0],
+    score: 6,
+    timeoutsRemaining: 2
+)
+
+let ocEliteState = TeamGameState(
+    team: sampleOpponentTeams[1],
+    score: 12,
+    timeoutsRemaining: 1
+)
+
+let gatewayHoopsState = TeamGameState(
+    team: sampleOpponentTeams[2],
+    score: 17,
+    timeoutsRemaining: 0
+)
+
+
+// Games
+
+let sampleGames: [Game] = [
+    Game(
+        teamOne: laBallersState,
+        teamTwo: cerritosFiveState,
+        scoringFormat: .onesAndTwos,
+        gameFormat: .fiveOnFive
+    ),
+
+    Game(
+        teamOne: southBayHoopsState,
+        teamTwo: ocEliteState,
+        scoringFormat: .twosAndThrees,
+        gameFormat: .fiveOnFive
+    ),
+
+    Game(
+        teamOne: laBallersState,
+        teamTwo: gatewayHoopsState,
+        scoringFormat: .onesAndTwos,
+        gameFormat: .threeOnThree
+    ),
+
+    Game(
+        teamOne: southBayHoopsState,
+        teamTwo: cerritosFiveState,
+        scoringFormat: .onesAndTwos,
+        gameFormat: .threeOnThree
+    ),
+
+    Game(
+        teamOne: laBallersState,
+        teamTwo: ocEliteState,
+        scoringFormat: .twosAndThrees,
+        gameFormat: .fiveOnFive
+    )
+]

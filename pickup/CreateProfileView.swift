@@ -9,6 +9,8 @@ struct CreateProfileView: View {
     @State private var selectedPositions: Set<Position> = []
     @State private var selectedGamePrefs: Set<GameFormat> = []
     @State private var selectedScoringPrefs: Set<ScoringFormat> = []
+    @State private var profileCreated = false
+    @State private var createdUser: User?
     
     var onCreate: (User) -> Void
     
@@ -62,10 +64,18 @@ struct CreateProfileView: View {
                 )
                 
                 onCreate(user)
+                createdUser = user
+                profileCreated = true
             }.padding()
             .buttonStyle(.borderedProminent)
+            .navigationDestination(isPresented: $profileCreated) {
+                if let user = createdUser {
+                    ProfileView(user: user)
+                }
+            }
         }
     }
+        
     
     func multiSelectionSection<T>(title: String, options: [T], selection: Binding<Set<T>>, height: CGFloat) -> some View where T: Hashable, T: RawRepresentable, T.RawValue == String {
         
@@ -83,6 +93,7 @@ struct CreateProfileView: View {
 }
 
 #Preview {
-    CreateProfileView { user in
+    NavigationStack {
+        CreateProfileView { user in }
     }
 }
