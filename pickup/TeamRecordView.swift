@@ -1,20 +1,18 @@
 import SwiftUI
 
-struct GameLogView: View {
-    let userGames: [Game]
-    // how to order recently updated? timestamps / dates?
+struct TeamRecordView: View {
+    let userTeams: [Team]
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 LazyVStack(spacing: 0) {
-                    ForEach (userGames) { game in
+                    ForEach (userTeams) { team in
                         NavigationLink {
-                            GameView(game: game)
+                            TeamView(team: team)
                         } label: {
-                            gameLogRow(game: game)
+                            teamRecordRow(team: team)
                         }
-                        
                         Divider()
                             .frame(height: 1)
                             .overlay(.black)
@@ -24,7 +22,7 @@ struct GameLogView: View {
             
             NavigationLink {
                 // sample data
-                CreateGameView(userTeams: sampleUserTeams, oppTeams: sampleOpponentTeams)
+                CreateTeamView(currentUser: sampleCurrentUser, friends: sampleFriends)
             } label: {
                 Image(systemName: "plus")
                     .font(.title)
@@ -34,23 +32,20 @@ struct GameLogView: View {
                 .padding()
         }
     }
-    
-    func gameLogRow(game: Game) -> some View {
-        return VStack {
-            Text("\(game.teamOne.team.name) (\(game.teamOne.score)) vs. \(game.teamTwo.team.name) (\(game.teamTwo.score))")
-            HStack {
-                // later, some kind of win/loss symbol?
-                Text("\(game.scoringFormat.rawValue)")
-                Text("\(game.gameFormat.rawValue)")
-            }
-            Text("\(game.status.rawValue)")
-        }.frame(maxWidth: .infinity, minHeight: 100)
+        
+    func teamRecordRow(team: Team) -> some View {
+        return VStack(alignment: .leading) {
+            Text("\(team.name)")
+            Text("\(team.city), \(team.state)")
+            Text("\(team.wins)-\(team.losses)")
+        }.frame(maxWidth: .infinity, minHeight: 100, alignment: .leading)
             .foregroundStyle(.black)
+            .padding(.horizontal)
     }
 }
 
 #Preview {
     NavigationStack {
-        GameLogView(userGames: sampleGames)
+        TeamRecordView(userTeams: sampleUserTeams)
     }
 }

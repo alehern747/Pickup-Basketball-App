@@ -3,7 +3,7 @@ import SwiftUI
 struct CreateTeamView: View {
     let currentUser: User
     let friends: [User]
-    
+
     @State private var teamName: String = ""
     @State private var teamCity: String = ""
     @State private var teamState: USState = .alabama

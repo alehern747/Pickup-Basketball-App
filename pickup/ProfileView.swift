@@ -8,28 +8,22 @@ struct ProfileView: View {
             Image(systemName: "person.crop.circle")
             Text(user.name).font(.title)
             Text("\(user.city), \(user.state)")
-        }
-        
-        VStack(alignment: .leading) {
-            Divider()
             
-            profileSection(title: "Position", tags: user.positions.map { $0.rawValue })
-            
-            Divider()
-            
-            profileSection(title: "Experience", tags: [user.experienceLevel.rawValue])
-            
-            Divider()
-
-            profileSection(title: "Preferences", tags: user.gamePreferences.map {$0.rawValue} + user.scoringPreferences.map{ $0.rawValue })
-        }
-        .padding(.horizontal, 20)
-        .padding()
-        
-        VStack {
-            Button("Game Log", action: {
-                print("Navigate to game log") // Go to new screen
-            })
+            VStack(alignment: .leading) {
+                Divider()
+                
+                profileSection(title: "Position", tags: user.positions.map { $0.rawValue })
+                
+                Divider()
+                
+                profileSection(title: "Experience", tags: [user.experienceLevel.rawValue])
+                
+                Divider()
+                
+                profileSection(title: "Preferences", tags: user.gamePreferences.map {$0.rawValue} + user.scoringPreferences.map{ $0.rawValue })
+            }
+            .padding(.horizontal, 20)
+            .padding()
         }
         .buttonStyle(.borderedProminent)
     }
