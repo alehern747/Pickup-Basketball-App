@@ -41,7 +41,7 @@ enum ExperienceLevel: String, CaseIterable {
     case professional = "Professional"
 }
 
-enum Position : String, CaseIterable {
+enum Position : String, Hashable, CaseIterable {
     case pointGuard = "Point Guard"
     case shootingGuard = "Shooting Guard"
     case smallForward = "Small Forward"
