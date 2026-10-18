@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct CreateProfileView: View {
     @State private var displayName: String = ""
     @State private var city: String = ""

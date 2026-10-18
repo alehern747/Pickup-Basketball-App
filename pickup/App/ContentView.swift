@@ -5,7 +5,8 @@ struct ContentView: View {
         NavigationStack {
             // title view here eventually
             // GameLogView(userGames: sampleGames)
-            CreateProfileView { user in } // users.append(user) }
+            MapView()
+            // CreateProfileView { user in } // users.append(user) }
         }
     }
 }

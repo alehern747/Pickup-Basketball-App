@@ -28,6 +28,8 @@ struct HomeView: View {
             GameLogView(userGames: sampleGames)
                 .tag(HomeTab.games)
                 // add new game should be at the top? + search
+            PlaybookView()
+                .tag(HomeTab.plays)
             // searches
                 // then what is the search for?
         }.tabViewStyle(.page(indexDisplayMode: .never))
@@ -37,5 +39,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    NavigationStack {
+        HomeView()
+    }
 }

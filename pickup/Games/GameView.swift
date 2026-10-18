@@ -56,5 +56,3 @@ struct GameView: View {
 #Preview {
     GameView(game: sampleGame)
 }
-
-// ADD going back button? as simple as a back arrow?
